@@ -37,33 +37,10 @@ import { Font } from "astro:assets";
   body {
     min-height: 100dvh;
 
-    background: linear-gradient(90deg,rgba(42, 155, 149, 1) 0%, rgba(87, 199, 133, 1) 50%, rgb(47, 145, 90) 100%);
-    background-size: 400% 400%;
-    animation: gradient-shift 20s ease infinite;
+    background: #023423;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
     font-family: var(--font-alfa-slab-one), cursive;
-    padding-block-start: clamp(1rem, 10vw, 5rem);
-  }
-
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    body {
-      animation: none;
-    }
+    padding-block-start: clamp(1rem, 5vw, 5rem);
+    color: #fff;
   }
 </style>

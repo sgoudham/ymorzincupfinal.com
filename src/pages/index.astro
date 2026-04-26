@@ -1,18 +1,61 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { AddToCalendarButton } from "add-to-calendar-button-react";
+import heroImage from "../assets/hero.png";
+import { Image } from "astro:assets";
+import Skeleton from "../layouts/Skeleton.astro";
+import { Countdown } from "../components/Countdown";
+
+const title = "Y'morzin Cup Final";
+const location = "Dunterlie Park, Carlibar Road, Barrhead, Glasgow G78 1AA, UK";
 ---
 
-<Layout>
-  <h1>Y'morzin Cup Final</h1>
-</Layout>
+<Skeleton>
+  <main>
+    <Image class="hero" src={heroImage} alt="Members of the football team celebrating a win" />
+    <h1>{title}</h1>
+    <Countdown client:only="react" date={new Date("2026-06-27T12:00:00Z")} />
+    <p>{location}</p>
+    <p>Saturday 27th June, 2026, 13:00 - 15:00</p>
+    <AddToCalendarButton client:only="react"
+        label="Add to Calendar"
+        name={title}
+        options="'Apple','Google'"
+        location={location}
+        startDate="2026-06-27"
+        endDate="2026-06-27"
+        startTime="12:00"
+        endTime="14:00"
+        timeZone="UTC"
+        options="'Apple','Google','iCal','Outlook.com','Yahoo'"
+      ></AddToCalendarButton>
+  </main>
+</Skeleton>
 
 <style>
-  h1 {
-    color: #ffffff;
-    font-size: clamp(2rem, 8vw, 5rem);
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
     text-align: center;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .hero {
+    max-width: 90%;
+    height: auto;
+    box-shadow: 1px 10px 10px 1px rgba(0, 0, 24, 0.5);
+    border-radius: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     font-weight: 200;
+  }
+
+  p {
+    font-size: clamp(1rem, 4vw, 2rem);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 </style>
