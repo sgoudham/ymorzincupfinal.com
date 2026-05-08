@@ -8,20 +8,19 @@ export const Countdown = ({ date }: { date: Date }) => {
 	return (
 		<div className={styles.countdown}>
 			<div className={styles.time}>
-				<span className={styles["time-value"]}>{days}</span>
-				<span className={styles["time-label"]}>Days</span>
+				<span className={styles["time-value"]}>{days}d</span>
 			</div>
+			<div className={styles.time}>:</div>
 			<div className={styles.time}>
-				<span className={styles["time-value"]}>{hours}</span>
-				<span className={styles["time-label"]}>Hours</span>
+				<span className={styles["time-value"]}>{hours}h</span>
 			</div>
+			<div className={styles.time}>:</div>
 			<div className={styles.time}>
-				<span className={styles["time-value"]}>{minutes}</span>
-				<span className={styles["time-label"]}>Minutes</span>
+				<span className={styles["time-value"]}>{minutes}m</span>
 			</div>
+			<div className={styles.time}>:</div>
 			<div className={styles.time}>
-				<span className={styles["time-value"]}>{seconds}</span>
-				<span className={styles["time-label"]}>Seconds</span>
+				<span className={styles["time-value"]}>{seconds}s</span>
 			</div>
 		</div>
 	);

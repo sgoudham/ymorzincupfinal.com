@@ -13,5 +13,10 @@ export default defineConfig({
 			name: "Alfa Slab One",
 			cssVariable: "--font-alfa-slab-one",
 		},
+		{
+			provider: fontProviders.google(),
+			name: "DM Serif Text",
+			cssVariable: "--font-dm-serif-text",
+		},
 	],
 });
