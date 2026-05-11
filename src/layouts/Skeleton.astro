@@ -5,8 +5,7 @@ import heroImage from "../assets/hero.png";
 export const title = "Y'morzin Cup Final";
 export const location =
 	"Dunterlie Park, Carlibar Road, Barrhead, Glasgow G78 1AA, UK";
-export const locationFormatted =
-	"Dunterlie Park, Carlibar Road, Barrhead, Glasgow G78 1AA";
+export const locationFormatted = "Dunterlie Park, Carlibar Road,\nBarrhead, Glasgow,\nG78 1AA";
 export const description = `Come along to the third annual ${title} at ${location} on Saturday 27th June, 2026, from 13:00 to 15:00.`;
 export const youtubeLink = `https://www.youtube.com/@YmorzinCupFinal`
 export const donationLink = `https://www.justgiving.com/page/ymorzin-cup-final-26`
@@ -45,7 +44,7 @@ export const donationLink = `https://www.justgiving.com/page/ymorzin-cup-final-2
 
     <title>Y'morzin Cup Final</title>
 
-    <Font cssVariable="--font-alfa-slab-one" />
+    <Font cssVariable="--font-dm-serif-text" />
   </head>
   <body>
     <slot />
@@ -68,8 +67,8 @@ export const donationLink = `https://www.justgiving.com/page/ymorzin-cup-final-2
 
   body {
     min-height: 100vh;
-    background: linear-gradient(180deg, #000000 15%, #10161e 100%);
-    font-family: var(--font-dm-serif-text), cursive;
+    background: linear-gradient(180deg, #000000 25%, #061d29 70%, #0D4E71 100%);
+    font-family: var(--font-dm-serif-text);
     padding-block-start: clamp(1rem, 5vw, 3rem);
     color: #fff;
   }
