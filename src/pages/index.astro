@@ -1,6 +1,7 @@
 ---
 import { AddToCalendarButton } from "add-to-calendar-button-react";
 import logo from "../assets/glitchLogo.png";
+import refuweegee from "../assets/refuweegeeLogoWhite.png";
 import { Image } from "astro:assets";
 import Skeleton, { title, location, locationFormatted, youtubeLink, donationLink } from "../layouts/Skeleton.astro";
 import { Countdown } from "../components/Countdown";
@@ -11,9 +12,7 @@ import { Countdown } from "../components/Countdown";
   <main>
     <Image class="logo" src={logo} alt="YCF 26 Logo" />
     <h1>{title.toUpperCase()}</h1>
-    <Countdown client:only="react" date={new Date("2026-06-27T12:00:00Z")} />
-    <p class="date">27/06/26 - 13:00</p>
-    <p class="address">{locationFormatted}</p>
+    <p class="date">27.06.26 - 13:00</p>
     <AddToCalendarButton client:only="react"
         label="Add to Calendar"
         name={title}
@@ -26,20 +25,27 @@ import { Countdown } from "../components/Countdown";
         timeZone="UTC"
         options="'Apple','Google','iCal','Outlook.com','Yahoo'"
       ></AddToCalendarButton>
+    <Countdown client:only="react" date={new Date("2026-06-27T12:00:00Z")} />
+    <p class="address">{locationFormatted}</p>
+    <br />
+    <div class="button-row">
+      <Image class="refuweegee" src={refuweegee} alt="Refuweegee Logo" />
       <div class="donate-button">
         <a href={donationLink} class="donate-text">Donate Here!</a>
       </div>
-      <p>Can't make it? Don't worry</p>
-      <div class="youtube-button">
-        <svg class="yt-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M21.58 7.19a2.76 2.76 0 0 0-1.94-1.95C18 5 12 5 12 5s-6 0-7.64.24A2.76 2.76 0 0 0 2.42 7.19 28.88 28.88 0 0 0 2 12a28.88 28.88 0 0 0 .42 4.81 2.76 2.76 0 0 0 1.94 1.95C6 19 12 19 12 19s6 0 7.64-.24a2.76 2.76 0 0 0 1.94-1.95A28.88 28.88 0 0 0 22 12a28.88 28.88 0 0 0-.42-4.81zM10 15V9l5.2 3z"/>
-        </svg>
-        <a href={youtubeLink} class="youtube-text">YouTube</a>
+    </div>
+    <div class="button-row">
+      <div class="text-stack">
+        <p style="width:100%;">Can't make it?</p>
+        <p>Watch Live Here</p>
       </div>
-      <p>The match will be shown live</p>
-      <p>Follow us:</p>
+      <div class="youtube-button">
+        <a href={youtubeLink} class="youtube-text">YCF YouTube</a>
+      </div>
+    </div>
+    <p>Follow us:</p>
       
-      <div class="social-icons">
+    <div class="social-icons">
   <a href="https://www.facebook.com/profile.php?id=61582767508163" target="_blank" rel="noopener" aria-label="Facebook">
     <svg viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
       <title>Facebook social icon</title>
@@ -69,17 +75,18 @@ import { Countdown } from "../components/Countdown";
   }
 
   .logo {
-    max-width: 20%;
+    max-width: 30%;
     height: auto;
     filter: drop-shadow(0 0 15px rgba(27, 101, 158, 0.21));
+    margin-top: 20px;
   }
 
   h1 {
     font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: lighter;
     text-shadow: 0 0 15px rgba(30, 128, 203, 0.361);
-    
-    font-weight: bold;
     color: #328fe1;
+    margin-bottom: 0;
   }
 
   p {
@@ -89,28 +96,45 @@ import { Countdown } from "../components/Countdown";
 
   .date {
     font-size: clamp(2.3rem, 4vw, 4rem);
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
     color: #328fe1;
+    margin-top: -35px;
   }
 
   .address {
     font-style: italic;
     font-size: clamp(0.7rem, 4vw, 1.2rem);
-    max-width: 25%;
+    font-weight: lighter;
+    white-space: pre-line;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .refuweegee {
+    max-width: 30%;
+    height: auto;
+    filter: drop-shadow(0 0 5px rgb(0, 0, 0));
   }
 
   .donate-text {
     text-decoration: none;
-    color: white;
-    font-size: clamp(2.3rem, 4vw, 4rem);
+    color: rgb(23, 23, 23);
+    font-size: clamp(1.6rem, 4vw, 4rem);
   }
 
   .donate-button {
+    min-width: fit-content;
+    width: 220px;
+    justify-content: center;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #328fe1;
+    background: #ffffff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -123,12 +147,21 @@ import { Countdown } from "../components/Countdown";
   }
 
   .donate-button:hover {
-    background: #550b80;
-    transform: translateY(-1px);
+    background: #e7e7e7;
   }
 
   .donate-button:active {
-    transform: translateY(0);
+    transform: translateY(1px);
+  }
+
+  .text-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .text-stack p {
+    max-width: none;
   }
 
   .youtube-text {
@@ -138,28 +171,30 @@ import { Countdown } from "../components/Countdown";
   }
 
   .youtube-button {
+    min-width: fit-content;
+    width: 220px;
+    justify-content: center;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #FF0000;
+    background: #D63A3A;
     color: #fff;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 10px 20px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     letter-spacing: 0.5px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(255,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
   .youtube-button:hover {
-    background: #cc0000;
-    transform: translateY(-1px);
+    background: #a62828;
   }
 
   .youtube-button:active {
-    transform: translateY(0);
+    transform: translateY(1px);
   }
 
   .yt-icon { width: 20px; height: 20px; }
@@ -178,7 +213,7 @@ import { Countdown } from "../components/Countdown";
   width: 36px;
   height: 36px;
   padding: 7px;
-  background: linear-gradient(135deg, #2b4967 0%, #05264b 100%);
+  background: linear-gradient(135deg, #132537 0%, #021123 100%);
   border-radius: 12px;
   color: #ffffff;
   text-decoration: none;
