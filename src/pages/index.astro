@@ -27,7 +27,6 @@ import { Countdown } from "../components/Countdown";
       ></AddToCalendarButton>
     <Countdown client:only="react" date={new Date("2026-06-27T12:00:00Z")} />
     <p class="address">{locationFormatted}</p>
-    <br />
     <div class="button-row">
       <Image class="refuweegee" src={refuweegee} alt="Refuweegee Logo" />
       <div class="donate-button">
@@ -95,7 +94,7 @@ import { Countdown } from "../components/Countdown";
   }
 
   .date {
-    font-size: clamp(2.3rem, 4vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     color: #328fe1;
     margin-top: -35px;
   }
